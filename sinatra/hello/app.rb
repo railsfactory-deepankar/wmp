@@ -1,42 +1,16 @@
 require 'sinatra'
-
-
-get '/hi' do
-  "Hello World!"
-end
-
-
-get '/time' do
-  Time.now.strftime("%d-%m-%Y %B %e %A")
-end
-
-get '/hello/:name' do
-  "Hello #{params[:name]}!"
-end
-
-get '/html' do
-  "
-<html>  
-  <head>
-  <title>hello </title>
-  </head>
-  <body>
-  <h1>hello world</h1>
-  </body>
-  
-</html>  
-  "
-end
-
-
+require './roman.rb'
+require './numbers.rb'
 get '/page' do 
-name  =   params['name']
-page =    File.read('./form.html')
-page =  page + '<h1>' + name.to_s + '<h1>' # unless name.nil?
+month  =   params['month']
+day = params['day']
+year = params['year']
+page =    File.read('./calender.html')
+str =  month.to_s  + " " + day.to_s + " " + year.to_s 
+s = Roman.convert(year)
+r = Numbers.convert(day)
+page =  page + " " +  month.to_s + " " + r.to_s + " " + s.to_s  # unless name.nil?
+
 end
 
-get '/page2' do 
-name  =   params['name']
-page =    File.read('./form.html')
-page.gsub( '#name#',   name.to_s )
-end
+
