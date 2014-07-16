@@ -1,6 +1,6 @@
 class Roman
 
-  def self.convert(num)
+  def convert(num)
 	c1 = 0
 	c2 = 0
 	c3 = 0
