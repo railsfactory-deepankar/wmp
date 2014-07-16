@@ -11,8 +11,7 @@ page =    File.read('./calender.html')
 str =  month.to_s  + " " + day.to_s + " " + year.to_s 
 s = i.convert(year)
 r = j.convert(day)
-page =  page + " " +  month.to_s + " " + r.to_s + " " + s.to_s  # unless name.nil?
-
+page =  page + " " +  month.to_s + " " + r.to_s + " " + s.to_s  
 end
 
 
