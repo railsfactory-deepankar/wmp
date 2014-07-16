@@ -1,17 +1,21 @@
 require 'sinatra'
 require './roman.rb'
 require './numbers.rb'
-i = Roman.new()
-j = Numbers.new()
+require './spell_digit.rb'
+require './Bengali.rb'
 get '/page' do 
-month  =   params['month']
-day = params['day']
-year = params['year']
-page =    File.read('./calender.html')
-str =  month.to_s  + " " + day.to_s + " " + year.to_s 
-s = i.convert(year)
-r = j.convert(day)
-page =  page + " " +  month.to_s + " " + r.to_s + " " + s.to_s  
+month  =   params['month'].to_i
+day = params['day'].to_i
+year = params['year'].to_i
+page =    File.read('./cal.html')
+d =''
+if day !=0 && month !=0 && year !=0
+t = Time.new( year , month , day)
+d = t.strftime('%A')
+e = Bengalicalendar.convert(d)
+end
+
+page =  page + " " +  month.to_s + " " + Numbers.convert(day) + " " +  Roman.convert(year) + Spell_digit.convert(year) + d.to_s + e.to_s
 end
 
 

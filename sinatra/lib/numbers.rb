@@ -1,6 +1,6 @@
 class Numbers
 
-  def convert(number)
+  def self.convert(number)
       num = number.to_i
         if num <20 and num>10
              "#{number.to_i}th"
